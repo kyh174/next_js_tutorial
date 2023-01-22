@@ -39,6 +39,11 @@
 
       function HomePage() {
         const names = ['Ada Lovelace', 'Grace Hopper', 'Margartet Hamilton'];
+        // useState() 함수는 배열을 리턴,
+        // 첫 번째 요소는 state 값
+        // 두 번쨰 요소는 state 값을 업데이트 할 수 있는 함수
+        // 인자로 state 의 초기값을 줄 수 있음
+        const [likes, setLikes] = React.useState(0); // 초기값 0 전달
 
         /*return (<div>
           <Header title="React 😀" />
@@ -48,6 +53,11 @@
           <Header4 />
           <Header4 title="리액트4"/>
         </div>)*/
+
+        // 이벤트 핸들러
+        function handleClick() {
+          setLikes(likes + 1);
+        }
         
         return (
           <div>
@@ -57,6 +67,7 @@
                 <li key={name}>{name}</li>
               ))}
             </ul>
+            <button onClick={handleClick}>Like({likes})</button>
           </div>
         )
       }
