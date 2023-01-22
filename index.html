@@ -6,7 +6,62 @@
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     <script type="text/jsx">
       const app = document.getElementById('app');
-      ReactDOM.render(<h1>Develop. Preview. Ship. </h1>, app);
+      
+      function Header(props) {
+        return (<h1>
+          {props.title}
+        </h1>)
+      }
+      function Header2({ title }) {
+        return (<h1>
+          {`Cool ${title}`}
+        </h1>)
+      }
+      function createTitle(title) {
+        if (title) {
+          return title;
+        } else {
+          return 'Default title';
+        }
+      }
+      function Header3({ title }) {
+        return (<h1>
+          {createTitle(title)}
+        </h1>)
+      }
+      function Header4(props) {
+        const tit = props.title;
+
+        return (
+          <h1>{tit ? tit : '기본제목'}</h1>
+        )
+      }
+
+      function HomePage() {
+        const names = ['Ada Lovelace', 'Grace Hopper', 'Margartet Hamilton'];
+
+        /*return (<div>
+          <Header title="React 😀" />
+          <Header2 title="React2 😀" />
+          <Header3 />
+          <Header3 title="React3"/>
+          <Header4 />
+          <Header4 title="리액트4"/>
+        </div>)*/
+        
+        return (
+          <div>
+            <Header title="반복하기" />
+            <ul>
+              {names.map( (name) => (
+                <li key={name}>{name}</li>
+              ))}
+            </ul>
+          </div>
+        )
+      }
+
+      ReactDOM.render(<HomePage />, app)
     </script>
   </body>
 </html>
